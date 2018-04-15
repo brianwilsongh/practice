@@ -92,6 +92,11 @@ public class PencilTests {
         assertEquals(10, p.pointDurability);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void pencilWriteMustThrowErrorIfPaperNull(){ //assumes we DON'T want this exception caught
+        defaultPencil.write("into the void", null);
+    }
+
     // tests for feature: SHARPEN
     @Test
     public void pencilRegainsPointDurabilityAfterSuccessfulSharpen(){
