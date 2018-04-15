@@ -7,8 +7,8 @@ public class Pencil {
 
 
     public Pencil(int pointDurability, int eraserDurability, int length) {
-        this.maxPointDurability = this.pointDurability = pointDurability;
-        this.eraserDurability = eraserDurability;
-        this.length = length;
+        this.maxPointDurability = this.pointDurability = pointDurability > 0 ? pointDurability : 0;
+        this.eraserDurability = eraserDurability > 0 ? eraserDurability : 0;
+        this.length = length > 0 ? length : 0;
     }
 }

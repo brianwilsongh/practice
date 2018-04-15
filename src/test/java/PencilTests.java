@@ -8,7 +8,7 @@ public class PencilTests {
     Pencil defaultPencil;
     Paper defaultPaper;
 
-    Random rand = new Random(); //random numbers
+    Random rand = new Random(); //to generate random numbers
 
     @Before
     public void setup(){
@@ -26,6 +26,13 @@ public class PencilTests {
         assertEquals(randomEraserDurability, customPencil.eraserDurability);
         assertEquals(randomLength, customPencil.length);
         assertEquals(randomPointDurability, customPencil.pointDurability);
+
+        //negative property values passed into pencil constructor should default to zero (-30 durability makes no sense)
+        Pencil negativePencil = new Pencil(-rand.nextInt(100) - 1, -rand.nextInt(100) - 1, -rand.nextInt(100) - 1);
+        assertEquals(0, negativePencil.maxPointDurability);
+        assertEquals(0, negativePencil.eraserDurability);
+        assertEquals(0, negativePencil.length);
+        assertEquals(0, negativePencil.pointDurability);
     }
 
     // tests for feature: WRITE
