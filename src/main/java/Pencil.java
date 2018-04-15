@@ -6,6 +6,9 @@ public class Pencil {
     int length;
 
 
-    public Pencil() {
+    public Pencil(int pointDurability, int eraserDurability, int length) {
+        this.maxPointDurability = this.pointDurability = pointDurability;
+        this.eraserDurability = eraserDurability;
+        this.length = length;
     }
 }
