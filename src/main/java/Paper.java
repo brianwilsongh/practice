@@ -51,4 +51,8 @@ public class Paper {
         text = sb.toString();
         //TODO: determine what to do when trying to write whitespace on top of an existing non-whitespace char
     }
+
+    public void readContents(){
+        System.out.println(text);
+    }
 }

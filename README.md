@@ -52,11 +52,11 @@ If you want to find the .jar, run:
 ```
 cd target/
 ```
-Now you're in the directory where the .jar file is. It should have a name similar to 'pencil-01.jar' To run it, do:
+Now you're in the directory where the .jar file is. It should have a name similar to 'pencil-0.1.jar' To run it, do:
 ```
-java -jar pencil-01.jar
+java -jar pencil-0.1.jar
 ```
-The program doesn't do anything but print a success message, but if the Maven build works it means that all unit tests have passed.
+If the Maven build works it means that all unit tests have passed. You should see a Robert Frost poem as a success message.
 
 ## Built With
 

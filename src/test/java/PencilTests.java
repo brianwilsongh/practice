@@ -173,8 +173,4 @@ public class PencilTests {
         assertEquals("One To     a day keeps Dracula away", defaultPaper.getText());
     }
 
-
-
-
-
 }
