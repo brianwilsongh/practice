@@ -13,7 +13,10 @@ public class PaperTests {
 
     @Test
     public void newPaperObjectInitializesProperty(){
-
+        String initString = " paper should init with this ";
+        Paper p = new Paper(initString);
+        assertEquals(initString, p.getText());
+        assertEquals("", defaultPaper.getText());
     }
 
 
