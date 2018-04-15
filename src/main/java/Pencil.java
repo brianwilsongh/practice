@@ -13,22 +13,7 @@ public class Pencil {
     }
 
     public void write(String text, Paper paper){
-        String remainingText = text;
-        while (remainingText.length() > 0){
-            char thisChar = remainingText.charAt(0);
 
-            if (thisChar != ' '){
-                if (pointDurability > 0){
-                    paper.appendChar(thisChar);
-                } else {
-                    paper.appendChar(' ');
-                }
-            } else {
-                paper.appendChar(thisChar);
-            }
-            remainingText = remainingText.substring(1);
-
-        }
     }
 
 }

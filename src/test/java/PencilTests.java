@@ -56,27 +56,40 @@ public class PencilTests {
 
     @Test
     public void pencilWithPositivePointDurabilityWritesToPaperAndLosesDurability(){
-
+        Pencil p = new Pencil(100, 100, 100);
+        String test = "pencil p\n\n encil";
+        defaultPencil.write(test, defaultPaper);
+        assertEquals(test, defaultPaper.getText());
+        assertEquals(true, (p.pointDurability < 100));
     }
 
     @Test
-    public void pencilLosesTwoPointDurabilityForUppercase(){
-
-    }
-
-    @Test
-    public void pencilLosesOnePointDurabilityForLowercase(){
-
+    public void pencilLosesTwoDurabilityForUppercaseAndOneForLowercase(){
+        Pencil p = new Pencil(10, 10, 10);
+        p.write("a", defaultPaper);
+        assertEquals(9, p.pointDurability);
+        p.write("A", defaultPaper);
+        assertEquals(7, p.pointDurability);
+        p.write("bb", defaultPaper);
+        assertEquals(5, p.pointDurability);
+        p.write("BB", defaultPaper);
+        assertEquals(1, p.pointDurability);
     }
 
     @Test
     public void pencilWritesPartialMessageWhenDurabilityDepleted(){
-
+        Pencil p = new Pencil(3, 10, 10);
+        p.write("abcd", defaultPaper);
+        assertEquals("abc ", defaultPaper.getText());
     }
 
     @Test
     public void pencilPointDurabilityUnchangedWhenWritingSpacesOrNewlines(){
-
+        Pencil p = new Pencil(10, 10, 10);
+        p.write("", defaultPaper);
+        assertEquals(10, p.pointDurability);
+        p.write("\n\n ", defaultPaper);
+        assertEquals(10, p.pointDurability);
     }
 
     // tests for feature: SHARPEN
