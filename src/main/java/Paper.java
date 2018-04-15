@@ -6,6 +6,8 @@ public class Paper {
     public String getText(){ return this.text; }
     public void setText(String text){ this.text = text; }
 
+    public int lastIndex(){ return text.length() - 1;}
+
     public Paper() {
         this.text = "";
     }

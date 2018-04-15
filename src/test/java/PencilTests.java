@@ -162,7 +162,15 @@ public class PencilTests {
         defaultPaper.setText(test);
         defaultPencil.eraseEdit("apple", defaultPaper, "artichoke");
         assertEquals("An artich@k@ay keeps the doctor away", defaultPaper.getText());
+    }
 
+    @Test
+    public void pencilCannotEditWithoutPointDurability(){
+        Pencil p = new Pencil(3, 100, 100);
+        String test = "One garlic a day keeps Dracula away";
+        defaultPaper.setText(test);
+        p.eraseEdit("garlic", defaultPaper, "ToMaTo");
+        assertEquals("One To     a day keeps Dracula away", defaultPaper.getText());
     }
 
 

@@ -54,7 +54,7 @@ public class Pencil {
         }
         if (overwriteText != null && endIdx >= 0){
             int currentEditIdx = startIdx + 1; //start where the erasing ended
-            while (overwriteText.length() > 0) {
+            while (overwriteText.length() > 0 && currentEditIdx < paper.lastIndex()) {
                 char thisChar = overwriteText.charAt(0);
                 if (thisChar != ' ' && thisChar != '\n') {
                     if (Character.isUpperCase(thisChar)) {
@@ -64,11 +64,9 @@ public class Pencil {
                     }
                     if (this.pointDurability >= 0) {
                         paper.writeCharAt(thisChar, currentEditIdx); //write the actual char if there was enough durability
-                    } else {
-//                        paper.writeCharAt(' ', currentEditIdx);
                     }
                 } else {
-//                    paper.writeCharAt(thisChar, currentEditIdx);
+                    //TODO: should we use eraser or pencil?
                 }
                 overwriteText = overwriteText.substring(1); //assign to new string cutting off 1st char
                 currentEditIdx++;
