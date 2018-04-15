@@ -117,8 +117,24 @@ public class PencilTests {
     // tests for feature: ERASE
 
     @Test
-    public void pencilEraserDurabilityDecreasesWhenErasing(){
+    public void pencilCanEraseTextProperly(){
+        String test = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?";
+        defaultPaper.setText(test);
+        defaultPencil.erase("chuck", defaultPaper);
+        assertEquals("How much wood would a woodchuck chuck if a woodchuck could       wood?", defaultPaper.getText());
+        defaultPencil.erase("How much", defaultPaper);
+        assertEquals("         wood would a woodchuck chuck if a woodchuck could       wood?", defaultPaper.getText());
+    }
 
+    @Test
+    public void pencilEraserDurabilityDecreasesWhenErasingText(){ //does not include whitespace
+        Pencil p = new Pencil(100, 100, 100);
+        String test = "abcdefg  xy  z";
+        defaultPaper.setText(test);
+        p.erase("efg", defaultPaper);
+        assertEquals(97, p.eraserDurability);
+        p.erase("xy  z", defaultPaper);
+        assertEquals(94, p.eraserDurability);
     }
 
 

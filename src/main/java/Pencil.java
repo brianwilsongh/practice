@@ -41,6 +41,16 @@ public class Pencil {
         }
     }
 
+    public void erase(String str, Paper paper){
+        int endIdx = paper.lastIndexOfSubstring(str);
+        int startIdx = endIdx - str.length();
+        if (endIdx != -1){ //if string is a substring in text of this paper
+            for (int idx = endIdx; idx > startIdx; idx--){
+                this.eraserDurability -= paper.eraseAt(idx);
+            }
+        }
+    }
+
     public void sharpen() throws ShortPencilException {
         if (this.length > 0){
             this.length--;

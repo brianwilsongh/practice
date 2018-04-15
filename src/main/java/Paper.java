@@ -26,9 +26,16 @@ public class Paper {
         return lastIdx + substring.length() - 1;
     }
 
-    public void eraseAt(int idx){
+    public int eraseAt(int idx){
         StringBuilder sb = new StringBuilder(text);
+        int eraserDurabilityCost;
+        if (text.charAt(idx) == ' ' || text.charAt(idx) =='\n'){
+            eraserDurabilityCost = 0;
+        } else {
+            eraserDurabilityCost = 1;
+        }
         sb.setCharAt(idx, ' ');
         text = sb.toString();
+        return eraserDurabilityCost;
     }
 }

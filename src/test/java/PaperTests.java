@@ -45,6 +45,15 @@ public class PaperTests {
         assertEquals("Ke nu  eeves Whoa", defaultPaper.getText());
     }
 
+    @Test
+    public void paperReturnsEraserDegradationCostOfErase(){
+        defaultPaper.setText("A B c\n");
+        assertEquals(0, defaultPaper.eraseAt(1));
+        assertEquals(0, defaultPaper.eraseAt(5));
+        assertEquals(1, defaultPaper.eraseAt(4));
+        assertEquals(1, defaultPaper.eraseAt(2));
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void paperCallingEraseOutOfBoundsThrowsIndexOOBException(){ //assumes we DON'T want this exception caught
         defaultPaper.setText("Big Mac");
