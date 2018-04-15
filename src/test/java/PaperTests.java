@@ -19,6 +19,7 @@ public class PaperTests {
         assertEquals("", defaultPaper.getText());
     }
 
+    // tests for feature: WRITE
 
     @Test
     public void paperTextChangesAfterAppendingChars(){
@@ -32,6 +33,8 @@ public class PaperTests {
         assertEquals("Br \n", defaultPaper.getText());
     }
 
+    // tests for feature: ERASE
+
     @Test
     public void paperCanEraseAtAnyTextPositionWithinBounds(){
         defaultPaper.setText("Keanu Reeves Whoa");
@@ -43,8 +46,18 @@ public class PaperTests {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void paperCallingEraseOutOfBoundsThrowsIndexOOBException(){ //assumes we don't want this exception caught
+    public void paperCallingEraseOutOfBoundsThrowsIndexOOBException(){ //assumes we DON'T want this exception caught
         defaultPaper.setText("Big Mac");
         defaultPaper.eraseAt(12);
+    }
+
+    @Test
+    public void paperGetsLastIndexOfLastInstanceOfSubstringInText(){
+        defaultPaper.setText("abcabc abc");
+        assertEquals(9, defaultPaper.lastIndexOfSubstring("abc"));
+        assertEquals(-1, defaultPaper.lastIndexOfSubstring("z"));
+        assertEquals(-1, defaultPaper.lastIndexOfSubstring(""));
+        defaultPaper.setText("dog\ndogcat dogcat");
+        assertEquals(13, defaultPaper.lastIndexOfSubstring("dog"));
     }
 }
