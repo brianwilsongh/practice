@@ -31,4 +31,20 @@ public class PaperTests {
         defaultPaper.appendChar('\n');
         assertEquals("Br \n", defaultPaper.getText());
     }
+
+    @Test
+    public void paperCanEraseAtAnyTextPositionWithinBounds(){
+        defaultPaper.setText("Keanu Reeves Whoa");
+        defaultPaper.eraseAt(2);
+        assertEquals("Ke nu Reeves Whoa", defaultPaper.getText());
+        defaultPaper.eraseAt(5);
+        defaultPaper.eraseAt(6);
+        assertEquals("Ke nu  eeves Whoa", defaultPaper.getText());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void paperCallingEraseOutOfBoundsThrowsIndexOOBException(){ //assumes we don't want this exception caught
+        defaultPaper.setText("Big Mac");
+        defaultPaper.eraseAt(12);
+    }
 }
