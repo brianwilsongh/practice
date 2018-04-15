@@ -13,4 +13,8 @@ public class Paper {
     public Paper(String initial){
         this.text = initial;
     }
+
+    public void appendChar(char c){
+        text = new StringBuilder(text).append(c).toString();
+    }
 }

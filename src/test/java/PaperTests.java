@@ -21,7 +21,14 @@ public class PaperTests {
 
 
     @Test
-    public void paperStateChangesAfterAddingChars(){
-
+    public void paperTextChangesAfterAppendingChars(){
+        defaultPaper.appendChar('B');
+        assertEquals("B", defaultPaper.getText());
+        defaultPaper.appendChar('r');
+        assertEquals("Br", defaultPaper.getText());
+        defaultPaper.appendChar(' ');
+        assertEquals("Br ", defaultPaper.getText());
+        defaultPaper.appendChar('\n');
+        assertEquals("Br \n", defaultPaper.getText());
     }
 }
