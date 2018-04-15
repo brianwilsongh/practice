@@ -58,7 +58,7 @@ public class PencilTests {
     public void pencilWithPositivePointDurabilityWritesToPaperAndLosesDurability(){
         Pencil p = new Pencil(100, 100, 100);
         String test = "pencil p\n\n encil";
-        defaultPencil.write(test, defaultPaper);
+        p.write(test, defaultPaper);
         assertEquals(test, defaultPaper.getText());
         assertEquals(true, (p.pointDurability < 100));
     }
