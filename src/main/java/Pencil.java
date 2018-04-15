@@ -16,8 +16,18 @@ public class Pencil {
         String remainingText = text;
         while (remainingText.length() > 0){
             char thisChar = remainingText.charAt(0);
-            paper.appendChar(thisChar);
+
+            if (thisChar != ' '){
+                if (pointDurability > 0){
+                    paper.appendChar(thisChar);
+                } else {
+                    paper.appendChar(' ');
+                }
+            } else {
+                paper.appendChar(thisChar);
+            }
             remainingText = remainingText.substring(1);
+
         }
     }
 

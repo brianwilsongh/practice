@@ -38,7 +38,7 @@ public class PencilTests {
     // tests for feature: WRITE
     @Test
     public void pencilCanWriteToPaper(){
-        String test = "Domino's Pizza";
+        String test = "Domino's Pizza\na";
         defaultPencil.write(test, defaultPaper);
         assertEquals(test, defaultPaper.getText());
     }
@@ -48,7 +48,10 @@ public class PencilTests {
 
     @Test
     public void pencilWithZeroPointDurabilityWritesSpaces(){
-
+        Pencil zeroDurabilityPencil = new Pencil(0, 10, 10);
+        zeroDurabilityPencil.write("spaces only", defaultPaper);
+        assertEquals("           ", defaultPaper.getText());
+        assertEquals(0, zeroDurabilityPencil.pointDurability);
     }
 
     @Test
