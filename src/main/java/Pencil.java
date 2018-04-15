@@ -45,14 +45,36 @@ public class Pencil {
         int endIdx = paper.lastIndexOfSubstring(eraseText);
         int startIdx = endIdx - eraseText.length();
         if (endIdx != -1){ //if string is a substring in text of this paper
-            for (int idx = endIdx; idx > startIdx; idx--){
+            for (int eraseIdx = endIdx; eraseIdx > startIdx; eraseIdx--){
                 if (eraserDurability < 1){ //no more eraser means no more erasing
                     break;
                 }
-                this.eraserDurability -= paper.eraseAt(idx);
+                this.eraserDurability -= paper.eraseAt(eraseIdx);
             }
         }
-        if (overwriteText != null){
+        if (overwriteText != null && endIdx >= 0){
+            int currentEditIdx = startIdx + 1; //start where the erasing ended
+            while (overwriteText.length() > 0) {
+                char thisChar = overwriteText.charAt(0);
+                if (thisChar != ' ' && thisChar != '\n') {
+                    if (Character.isUpperCase(thisChar)) {
+                        this.pointDurability -= 2; //2 durability for uppercase letter
+                    } else {
+                        this.pointDurability -= 1; //1 for lower case
+                    }
+                    if (this.pointDurability >= 0) {
+                        paper.writeCharAt(thisChar, currentEditIdx); //write the actual char if there was enough durability
+                    } else {
+//                        paper.writeCharAt(' ', currentEditIdx);
+                    }
+                } else {
+//                    paper.writeCharAt(thisChar, currentEditIdx);
+                }
+                overwriteText = overwriteText.substring(1); //assign to new string cutting off 1st char
+                currentEditIdx++;
+            }
+
+
 
         }
     }

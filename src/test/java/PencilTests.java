@@ -157,10 +157,10 @@ public class PencilTests {
     }
 
     @Test
-    public void pencilEditOverwritesExistingCharactersWithAtSymbol(){
+    public void pencilEditOverwritesExistingCharactersWithSymbol(){
         String test = "An apple\na day keeps the doctor away";
         defaultPaper.setText(test);
-        defaultPencil.eraseEdit("artichoke", defaultPaper, "onion");
+        defaultPencil.eraseEdit("apple", defaultPaper, "artichoke");
         assertEquals("An artich@k@ay keeps the doctor away", defaultPaper.getText());
 
     }
