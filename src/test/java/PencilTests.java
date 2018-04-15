@@ -137,6 +137,15 @@ public class PencilTests {
         assertEquals(94, p.eraserDurability);
     }
 
+    @Test
+    public void pencilErasingWillFailIfEraserDurabilityHitsZero(){
+        Pencil p = new Pencil(100, 3, 100);
+        String test = "Buffalo Bill";
+        defaultPaper.setText(test);
+        p.erase("Bill", defaultPaper);
+        assertEquals("Buffalo B   ", defaultPaper.getText());
+    }
+
 
 
 

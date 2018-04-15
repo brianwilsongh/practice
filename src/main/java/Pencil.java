@@ -46,6 +46,9 @@ public class Pencil {
         int startIdx = endIdx - str.length();
         if (endIdx != -1){ //if string is a substring in text of this paper
             for (int idx = endIdx; idx > startIdx; idx--){
+                if (eraserDurability < 1){ //no more eraser means no more erasing
+                    break;
+                }
                 this.eraserDurability -= paper.eraseAt(idx);
             }
         }
