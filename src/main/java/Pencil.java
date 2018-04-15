@@ -11,4 +11,14 @@ public class Pencil {
         this.eraserDurability = eraserDurability > 0 ? eraserDurability : 0;
         this.length = length > 0 ? length : 0;
     }
+
+    public void write(String text, Paper paper){
+        String remainingText = text;
+        while (remainingText.length() > 0){
+            char thisChar = remainingText.charAt(0);
+            paper.appendChar(thisChar);
+            remainingText = remainingText.substring(1);
+        }
+    }
+
 }

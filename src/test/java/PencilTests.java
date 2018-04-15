@@ -38,7 +38,9 @@ public class PencilTests {
     // tests for feature: WRITE
     @Test
     public void pencilCanWriteToPaper(){
-
+        String test = "Domino's Pizza";
+        defaultPencil.write(test, defaultPaper);
+        assertEquals(test, defaultPaper.getText());
     }
 
 
