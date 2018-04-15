@@ -1,3 +1,5 @@
+import exceptions.ShortPencilException;
+
 public class Pencil {
 
     int maxPointDurability; //should not change after initial assignment
@@ -36,6 +38,15 @@ public class Pencil {
 
         if (this.pointDurability < 0) {
             this.pointDurability = 0; //prevent negative value for durability
+        }
+    }
+
+    public void sharpen() throws ShortPencilException {
+        if (this.length > 0){
+            this.length--;
+            this.pointDurability = this.maxPointDurability;
+        } else {
+            throw new ShortPencilException("Tried to sharpen a pencil with length less than one!");
         }
     }
 

@@ -3,12 +3,8 @@ public class Paper {
     private String text;
 
     /** GETTER/SETTER ARE FOR TESTING ONLY **/
-    public String getText(){
-        return this.text;
-    }
-    public void setText(String text){
-        this.text = text;
-    }
+    public String getText(){ return this.text; }
+    public void setText(String text){ this.text = text; }
 
     public Paper() {
         this.text = "";

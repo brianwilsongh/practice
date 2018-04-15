@@ -1,3 +1,4 @@
+import exceptions.ShortPencilException;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -100,12 +101,17 @@ public class PencilTests {
     // tests for feature: SHARPEN
     @Test
     public void pencilRegainsPointDurabilityAfterSuccessfulSharpen(){
-
+        Pencil p = new Pencil(100, 100, 100);
+        p.write("I'm only here to deplete your graphite\n\n", defaultPaper);
+        p.sharpen();
+        assertEquals(100, p.pointDurability);
     }
 
-    @Test
+    @Test(expected = ShortPencilException.class)
     public void pencilCannotSharpenWithZeroLength(){
-
+        Pencil p = new Pencil(10, 10, 0);
+        p.sharpen();
+        assertEquals(0, p.length);
     }
 
     // tests for feature: ERASE
