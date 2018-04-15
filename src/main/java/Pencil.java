@@ -41,9 +41,9 @@ public class Pencil {
         }
     }
 
-    public void erase(String str, Paper paper){
-        int endIdx = paper.lastIndexOfSubstring(str);
-        int startIdx = endIdx - str.length();
+    public void eraseEdit(String eraseText, Paper paper, String overwriteText){
+        int endIdx = paper.lastIndexOfSubstring(eraseText);
+        int startIdx = endIdx - eraseText.length();
         if (endIdx != -1){ //if string is a substring in text of this paper
             for (int idx = endIdx; idx > startIdx; idx--){
                 if (eraserDurability < 1){ //no more eraser means no more erasing
@@ -51,6 +51,9 @@ public class Pencil {
                 }
                 this.eraserDurability -= paper.eraseAt(idx);
             }
+        }
+        if (overwriteText != null){
+
         }
     }
 

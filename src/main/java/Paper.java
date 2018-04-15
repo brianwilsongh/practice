@@ -38,4 +38,15 @@ public class Paper {
         text = sb.toString();
         return eraserDurabilityCost;
     }
+
+    public void writeCharAt(char c, int idx){
+        StringBuilder sb = new StringBuilder(text);
+        if (text.charAt(idx) != ' ' && text.charAt(idx) != '\n'){
+            sb.setCharAt(idx, '@');
+        } else {
+            sb.setCharAt(idx, c);
+        }
+        text = sb.toString();
+        //TODO: determine what to do when trying to write whitespace on top of an existing non-whitespace char
+    }
 }

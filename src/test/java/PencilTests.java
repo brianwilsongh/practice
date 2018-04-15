@@ -120,9 +120,9 @@ public class PencilTests {
     public void pencilCanEraseTextProperly(){
         String test = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?";
         defaultPaper.setText(test);
-        defaultPencil.erase("chuck", defaultPaper);
+        defaultPencil.eraseEdit("chuck", defaultPaper, null);
         assertEquals("How much wood would a woodchuck chuck if a woodchuck could       wood?", defaultPaper.getText());
-        defaultPencil.erase("How much", defaultPaper);
+        defaultPencil.eraseEdit("How much", defaultPaper, null);
         assertEquals("         wood would a woodchuck chuck if a woodchuck could       wood?", defaultPaper.getText());
     }
 
@@ -131,9 +131,9 @@ public class PencilTests {
         Pencil p = new Pencil(100, 100, 100);
         String test = "abcdefg  xy  z";
         defaultPaper.setText(test);
-        p.erase("efg", defaultPaper);
+        p.eraseEdit("efg", defaultPaper, null);
         assertEquals(97, p.eraserDurability);
-        p.erase("xy  z", defaultPaper);
+        p.eraseEdit("xy  z", defaultPaper, null);
         assertEquals(94, p.eraserDurability);
     }
 
@@ -142,9 +142,29 @@ public class PencilTests {
         Pencil p = new Pencil(100, 3, 100);
         String test = "Buffalo Bill";
         defaultPaper.setText(test);
-        p.erase("Bill", defaultPaper);
+        p.eraseEdit("Bill", defaultPaper, null);
         assertEquals("Buffalo B   ", defaultPaper.getText());
     }
+
+
+    //tests for feature: EDIT
+    @Test
+    public void pencilCanEraseThenEdit(){
+        String test = "An apple a day keeps the doctor away";
+        defaultPaper.setText(test);
+        defaultPencil.eraseEdit("apple", defaultPaper, "onion");
+        assertEquals("An onion a day keeps the doctor away", defaultPaper.getText());
+    }
+
+    @Test
+    public void pencilEditOverwritesExistingCharactersWithAtSymbol(){
+        String test = "An apple\na day keeps the doctor away";
+        defaultPaper.setText(test);
+        defaultPencil.eraseEdit("artichoke", defaultPaper, "onion");
+        assertEquals("An artich@k@ay keeps the doctor away", defaultPaper.getText());
+
+    }
+
 
 
 

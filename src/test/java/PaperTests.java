@@ -33,6 +33,15 @@ public class PaperTests {
         assertEquals("Br \n", defaultPaper.getText());
     }
 
+    @Test
+    public void paperCanWriteAtIndexWithCharOrSymbolWithCollision(){ //paper writes "@" when trying to overwrite a char
+        defaultPaper.setText("This is Sparta");
+        defaultPaper.writeCharAt('a', 13);
+        assertEquals("This is Spart@", defaultPaper.getText());
+        defaultPaper.writeCharAt('M', 4);
+        assertEquals("ThisMis Spart@", defaultPaper.getText());
+    }
+
     // tests for feature: ERASE
 
     @Test
